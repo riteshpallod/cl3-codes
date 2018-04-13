@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>
+            Booths
+        </title>
+    </head>
+    <body>
+        <h3>Booths Algo</h3>
+        <form action = "/booths" method="POST">
+            number 1 <input type = "text" name = "number1">
+            number 2 <input type = "text" name = "number2">
+            <input type="submit">
+        </form>
+
+        {% if product %}
+        <h2>Product is {{ product }}</h2>
+        {% endif %}
+    </body>
+</html>
