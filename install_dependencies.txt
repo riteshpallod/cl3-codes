@@ -1,0 +1,8 @@
+For A3
+#use a virtual environment
+virtualenv --system-site-packages -p /usr/bin/python2 venv
+source venv/bin/activate
+
+#installing flask inside virtualenv venv
+pip install flask
+
