@@ -41,7 +41,8 @@ def add(a, b):
 
 def right_shift(number_array):
     #inserting A[0] at initial position and shifting it
-    number_array.insert(0, number_array[0])
+    number_array.insert(0, number_array[0]) 
+
     #shifting matlab poping it
     number_array.pop()
     return number_array
@@ -54,10 +55,11 @@ def binary_to_decimal(number_array):
     we need to convert this negative number back to positive
 
     if number is negative then the number is in 2s complement form
-    we take 1s complement and subtract 1.
+    we take 1s complement and add 1.
     '''
     length = len(number_array)
-
+    
+    #if number is negative
     if number_array[0] == 1:
         flag = -1
         #take ones complement
@@ -80,6 +82,7 @@ def binary_to_decimal(number_array):
         power += 1 
         index -= 1
     print("decimal calculated: ", number_decimal)
+    
     return flag*number_decimal
 
 def booths_multiply(a,b):

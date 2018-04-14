@@ -63,6 +63,39 @@ class Philosopher(threading.Thread):
             fork1.release()
 
             print('%s swaps forks' % self.name)
+            
+            '''
+            Why swap? 
+
+            fork1, fork2 ko assume karo hand1, hand2
+            and forkOnLeft and forkOnRight are actual spoons. 
+            So, initially hand1 (fork1) se utha rahe the forkOnLeft. And hand2 se forkOnRight
+            
+            And we always prefer hand1 (hand1/fork1 is forkOnLeft).
+            
+            So, pahila time we acquire left (BLOCKING). 
+            And then we try to acquire right (fork2/hand2).
+            if we are able to lock right, then we can dine.
+                But what if right is locked. WE HAVE TO RELEASE LEFT. WE RELEASE LEFT (hand1/fork1).
+            
+            Now there are two ways to proceed.
+            1. Non Swap
+            2. Swap
+
+            In non-swap, we start at the top of the while loop. 
+            and then do the same thing again again. WE CHECK FOR RIGHT. RIGHT IS BUSY. REPEAT
+            Now right is not busy for 2miliseconds or 3. But for 4-5 seconds. In that amount
+            the while loop may execute 10000+ times.
+
+            A better solution would be to first pick up the fork which was busy. Matlab, if the 
+            we wait for it to be released and then pick it up. Then acquire the lock/fork which was free earlier.
+            Now that we have both, we can dine.
+            We do this by swapping.
+
+            Instead of picking left fork (forkOnLeft) with fork1 (hand1) and right with fork2 (hand2).
+            We pick right with hand2.
+            '''
+
             fork1, fork2 = fork2, fork1
         else:
             return
