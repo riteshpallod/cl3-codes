@@ -1,0 +1,2 @@
+1. Install mongodb (follow instructions from their official documentation)
+2. Install pymongo
