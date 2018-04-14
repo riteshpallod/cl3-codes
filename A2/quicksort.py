@@ -1,7 +1,8 @@
 import threading
 import xml.etree.ElementTree as X
 import unittest
-import time, random
+
+array = []
 
 def partition(array, left, right):
     #first element pivot
@@ -46,15 +47,25 @@ def quicksort(array, left, right):
         thread_2.join()
         '''
 
+def dummy_quicksort(array):
+    quicksort(array, 0, len(array)-1)
+    return array
+
+class UnitTesting(unittest.TestCase):
+
+    def test_assert_equal(self):
+        self.assertEqual(dummy_quicksort(array), [1, 2, 3, 5, 7, 9, 11, 12, 22, 24, 33, 34, 36, 44, 45, 48, 55, 60, 66, 77, 88, 90, 99, 115, 118, 557, 664, 776, 887, 998, 999])
 
 
-root = X.parse("input.xml").getroot()
-#print('array: ', root.text)
-array = list(map(int, root.text.split()))
-print('array: ', array)
-quicksort(array,0,len(array)-1)
-print(array)
+if __name__ == "__main__":
+    root = X.parse("input.xml").getroot()
+    print('array: ', root.text)
+    
+    array = list(map(int, root.text.split()))
+    print('array: ', array)
 
+    print("testing..")
+    unittest.main()
 
 '''
 ignore this.
