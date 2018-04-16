@@ -1,0 +1,10 @@
+1. Extract google app engine zip
+2. Install pydev
+
+
+1. Google App Project
+2. (CHOOSE SECOND OPTION, CREATE SRC)
+3. Write code
+4. Change things in Run Config
+    1. Add argument ${project_loc}/src
+    2. Add dev_appserver.py (file in extracted zip)
